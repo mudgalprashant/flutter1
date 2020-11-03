@@ -9,7 +9,17 @@ void main() {
   );
 }
 
-class NinjaCard extends StatelessWidget {
+class NinjaCard extends StatefulWidget {
+  @override
+  _NinjaCardState createState() => _NinjaCardState();
+}
+
+class _NinjaCardState extends State<NinjaCard> {
+  int ninjaLevel = 2;
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,8 +30,18 @@ class NinjaCard extends StatelessWidget {
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
       ),
+      floatingActionButton: FloatingActionButton(
+        elevation: 10.0,
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
+        onPressed: (){
+          setState((){
+            ninjaLevel+=1;
+          });
+        }
+      ),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
+        padding: EdgeInsets.fromLTRB(50.0, 40.0, 50.0, 0.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -62,7 +82,7 @@ class NinjaCard extends StatelessWidget {
             ),
             SizedBox(height:20.0),
             Text(
-              '7A',
+              '$ninjaLevel',
               style: TextStyle(
                 color:Colors.amber,
                 letterSpacing: 2.0,
@@ -95,3 +115,4 @@ class NinjaCard extends StatelessWidget {
     );
   }
 }
+
